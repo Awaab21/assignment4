@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment Number 4 Documentation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1f2937;
+            line-height: 1.6;
+            margin: 40px;
+            background: #ffffff;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            color: #111827;
+            margin-top: 30px;
+        }
+        
+        h1 {
+            font-size: 2.6rem;
+            text-align: center;
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+            font-weight: 800;
+        }
+        
+        .subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #4b5563;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+        
+        .page-break {
+            page-break-before: always;
+            margin-top: 40px;
+        }
+        
+        .meta-container {
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 24px;
+            background: #f9fafb;
+            margin-bottom: 45px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+        }
+        
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .meta-item strong {
+            color: #4b5563;
+        }
+        
+        .card {
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            background: #ffffff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+        
+        .code-block {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 12px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+            margin-top: 15px;
+            border: 1px solid #1e293b;
+        }
+        
+        .screenshot-container {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .screenshot-container p {
+            font-size: 0.9rem;
+            color: #6b7280;
+            font-weight: 500;
+            margin-top: 8px;
+        }
+
+        .screenshot {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f3f4f6;
+            font-family: 'Outfit', sans-serif;
+            color: #374151;
+            font-weight: 600;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .badge {
+            background: #e0e7ff;
+            color: #4338ca;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Assignment Number 4 Documentation</h1>
+    <div class="subtitle">Multi-Application Blazor Server Development Suite</div>
+
+    <div class="meta-container">
+        <div class="meta-grid">
+            <div class="meta-item"><strong>Student Name:</strong> Awaab</div>
+            <div class="meta-item"><strong>Student Email:</strong> 247371@students.au.edu.pk</div>
+            <div class="meta-item"><strong>Instructor:</strong> Mr. Qaiser Ali</div>
+            <div class="meta-item"><strong>Department:</strong> Computer Science</div>
+            <div class="meta-item"><strong>Chairperson:</strong> Dr. Abdul Hameed</div>
+            <div class="meta-item"><strong>GitHub Repository:</strong> <a href="https://github.com/Awaab21/assignment4">Awaab21/assignment4</a></div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🛠️ Architectural Overview</h2>
+        <p>
+            The workspace has been organized into **8 standalone Blazor Web App projects** compiling and serving independently. Each project implements a dedicated assignment application. A unified glassmorphic sidebar menu is embedded in all layouts to enable quick navigation across active local ports.
+        </p>
+        <h3>Local Hosting Port Matrix</h3>
+        <ul>
+            <li><strong>Application01 (Data Binding):</strong> Port 5001</li>
+            <li><strong>Application02 (Form Validation):</strong> Port 5002</li>
+            <li><strong>Application03 (Local To-Do):</strong> Port 5003</li>
+            <li><strong>Application04 (Click Counter):</strong> Port 5004</li>
+            <li><strong>Application05 (Authentication State):</strong> Port 5005</li>
+            <li><strong>Application06 (DI Notifications):</strong> Port 5006</li>
+            <li><strong>Application07 (Theme Toggler App):</strong> Port 5007</li>
+            <li><strong>Application08 (Database To-Do Sync):</strong> Port 5008 (MS SQL LocalDB)</li>
+        </ul>
+    </div>
+
+    <!-- APP 1 -->
+    <div class="page-break"></div>
+    <div class="card">
+        <h2>🔗 Application 01: Data Binding Demonstration</h2>
+        <span class="badge">App 1 (Port 5001)</span>
+        <p>
+            This application demonstrates the core differences between C# one-way and two-way data binding models in Blazor Server. The text input captures username via two-way binding, triggering immediate re-renders of the one-way bound greeting header.
+        </p>
+        <h3>Core Page Implementation Code (Application01/Components/Pages/Home.razor)</h3>
+        <div class="code-block">@page "/"
+@rendermode InteractiveServer
+
+<PageTitle>App 1: Data Binding Demo</PageTitle>
+
+<div class="glass-card animate-fade-in">
+    <h2>🔗 Application 01: Data Binding Demonstration</h2>
+    <p class="text-secondary">Explore the differences between one-way and two-way data binding in Blazor.</p>
+    
+    <div class="form-group mt-4">
+        <label for="nameInput" class="form-label">Enter your name (Two-Way Bound):</label>
+        <input id="nameInput" type="text" class="form-control" @@bind="userName" placeholder="Type a name here..." />
+    </div>
+
+    <div class="alert-premium alert-info mt-4">
+        <span>👋</span>
+        <div>
+            <strong>Greeting (One-Way Bound):</strong> 
+            @@if (string.IsNullOrWhiteSpace(userName)) {
+                <span>Hello, Guest! Please enter your name above.</span>
+            } else {
+                <span>Hello, @@userName! Welcome to our premium Blazor dashboard.</span>
+            }
+        </div>
+    </div>
+</div>
+
+@@code {
+    private string userName { get; set; } = string.Empty;
+}</div>
+        
+        <div class="screenshot-container">
+            <img class="screenshot" src="images/app01.png" alt="Application 01 Output">
+            <p>Figure 1: Application 01 User Interface showcasing data binding inputs.</p>
+        </div>
+    </div>
+
+    <!-- APP 2 -->
+    <div class="page-break"></div>
+    <div class="card">
+        <h2>📝 Application 02: Form Validation with Data Annotations</h2>
+        <span class="badge">App 2 (Port 5002)</span>
+        <p>
+            This component validates a registration form using C# Data Annotation properties inside an <code>EditForm</code> context. It checks presence using <code>[Required]</code> and verifies structure via <code>[EmailAddress]</code>.
+        </p>
+        <h3>Core Page Implementation Code (Application02/Components/Pages/Home.razor)</h3>
+        <div class="code-block">@page "/"
+@rendermode InteractiveServer
+@using System.ComponentModel.DataAnnotations
+
+<PageTitle>App 2: Form Validation Demo</PageTitle>
+
+<div class="glass-card animate-fade-in">
+    <h2>📝 Application 02: Form & Data Annotations Validation</h2>
+    <p class="text-secondary">A styled user registration form validating required inputs and email formatting.</p>
+
+    @@if (formSubmittedSuccessfully) {
+        <div class="alert-premium alert-success animate-fade-in">
+            <span>🎉</span>
+            <div>
+                <strong>Form Submission Success!</strong><br />
+                The user account for <strong>@@lastSubmittedModel.FirstName @@lastSubmittedModel.LastName</strong> (@@lastSubmittedModel.Email) has been successfully created.
+            </div>
+        </div>
+    }
+
+    <EditForm Model="@@userModel" OnValidSubmit="HandleValidSubmit" FormName="UserRegistrationForm">
+        <DataAnnotationsValidator />
+        <div class="form-group">
+            <label class="form-label">First Name *</label>
+            <InputText class="form-control" @@bind-Value="userModel.FirstName" />
+            <ValidationMessage For="@@(() => userModel.FirstName)" />
+        </div>
+        <div class="form-group">
+            <label class="form-label">Last Name *</label>
+            <InputText class="form-control" @@bind-Value="userModel.LastName" />
+            <ValidationMessage For="@@(() => userModel.LastName)" />
+        </div>
+        <div class="form-group">
+            <label class="form-label">Email Address *</label>
+            <InputText class="form-control" @@bind-Value="userModel.Email" />
+            <ValidationMessage For="@@(() => userModel.Email)" />
+        </div>
+        <button type="submit" class="btn-premium mt-3">Submit Registration</button>
+    </EditForm>
+</div></div>
+        
+        <div class="screenshot-container">
+            <img class="screenshot" src="images/app02.png" alt="Application 02 Output">
+            <p>Figure 2: Form Validation warnings and error messaging display.</p>
+        </div>
+    </div>
+
+    <!-- APP 3 -->
+    <div class="page-break"></div>
+    <div class="card">
+        <h2>📋 Application 03: In-Memory To-Do List</h2>
+        <span class="badge">App 3 (Port 5003)</span>
+        <p>
+            Implements an in-memory task planner. A text box collects inputs with bidirectional synchronization, while a list processes changes dynamically in memory.
+        </p>
+        <h3>Core Page Implementation Code (Application03/Components/Pages/Home.razor)</h3>
+        <div class="code-block">@page "/"
+@rendermode InteractiveServer
+
+<PageTitle>App 3: Local To-Do List</PageTitle>
+
+<div class="glass-card animate-fade-in">
+    <h2>📋 Application 03: In-Memory To-Do List</h2>
+    <p class="text-secondary">Create and manage a quick local checklist.</p>
+
+    <div class="form-group d-flex gap-2 mt-4">
+        <input type="text" class="form-control" @@bind="newTaskTitle" placeholder="Enter task..." />
+        <button class="btn-premium" @@onclick="AddTask">Add Task</button>
+    </div>
+
+    <div class="task-list">
+        @@foreach (var task in tasks) {
+            <div class="task-item">
+                <input type="checkbox" @@bind="task.IsCompleted" />
+                <span>@@task.Title</span>
+                <button @@onclick="() => DeleteTask(task)">🗑️</button>
+            </div>
+        }
+    </div>
+    <button class="btn-danger-premium mt-3" @@onclick="ClearAllTasks">⚠️ Clear All</button>
+</div></div>
+        
+        <div class="screenshot-container">
+            <img class="screenshot" src="images/app03.png" alt="Application 03 Output">
+            <p>Figure 3: In-memory task list showing inputs and clear actions.</p>
+        </div>
+    </div>
+
+    <!-- APP 4 -->
+    <div class="page-break"></div>
+    <div class="card">
+        <h2>🔢 Application 04: Click Counter & Manual Adjuster</h2>
+        <span class="badge">App 4 (Port 5004)</span>
+        <p>
+            Demonstrates basic event handler routines and combined data bindings. An `@@onclick` handler increments click numbers, and a number input allows direct manual settings using two-way bindings.
+        </p>
+        <h3>Core Page Implementation Code (Application04/Components/Pages/Home.razor)</h3>
+        <div class="code-block">@page "/"
+@rendermode InteractiveServer
+
+<div class="glass-card animate-fade-in">
+    <h2>🔢 Application 04: Click Counter & Manual Adjuster</h2>
+    <div class="text-center py-4 my-3">
+        <h1>@@count</h1>
+        <button class="btn-premium" @@onclick="IncrementCount">➕ Increment</button>
+    </div>
+    <input type="number" class="form-control" @@bind="count" />
+</div></div>
+        
+        <div class="screenshot-container">
+            <img class="screenshot" src="images/app04.png" alt="Application 04 Output">
+            <p>Figure 4: Dynamic counter displaying click calculations and input bindings.</p>
+        </div>
+    </div>
+
+    <!-- APP 5 -->
+    <div class="page-break"></div>
+    <div class="card">
+        <h2>🔐 Application 05: Singleton State Management</h2>
+        <span class="badge">App 5 (Port 5005)</span>
+        <p>
+            Demonstrates shared state tracking across independent UI widgets using a singleton service dependency. Toggling login inside the login widget triggers events that immediately update welcome banners in the profile panel.
+        </p>
+        <h3>C# Shared Authentication Service Code (Application05/Services/AuthenticationStateService.cs)</h3>
+        <div class="code-block">using System;
+
+namespace Application05.Services
+{
+    public class AuthenticationStateService
+    {
+        public bool IsAuthenticated { get; private set; }
+        public event Action? OnChange;
+
+        public void LogIn() { IsAuthenticated = true; NotifyStateChanged(); }
+        public void LogOut() { IsAuthenticated = false; NotifyStateChanged(); }
+        private void NotifyStateChanged() => OnChange?.Invoke();
+    }
+}</div>
+        
+        <div class="screenshot-container">
+            <img class="screenshot" src="images/app05.png" alt="Application 05 Output">
+            <p>Figure 5: Singleton service propagating authentication status changes across components.</p>
+        </div>
+    </div>
+
+    <!-- APP 6 -->
+    <div class="page-break"></div>
+    <div class="card">
+        <h2>🔔 Application 06: Dependency Injection & Configuration</h2>
+        <span class="badge">App 6 (Port 5006)</span>
+        <p>
+            Implements configuration setup and DI. A singleton configuration registers style and default count values. Settings modifications trigger notifications that dynamically flip presentation layout between Compact and Detailed cards.
+        </p>
+        <h3>DI Notification Service Class Code (Application06/Services/NotificationService.cs)</h3>
+        <div class="code-block">namespace Application06.Services
+{
+    public class NotificationService
+    {
+        private readonly NotificationConfig _config;
+        public NotificationService(NotificationConfig config) { _config = config; }
+
+        public Task<List<NotificationItem>> GetNotificationsAsync(int? numberOfNotifications = null) {
+            int count = numberOfNotifications ?? _config.DefaultNumberOfNotifications;
+            // Generates simulated entries...
+        }
+    }
+}</div>
+        
+        <div class="screenshot-container">
+            <img class="screenshot" src="images/app06.png" alt="Application 06 Output">
+            <p>Figure 6: DI-configured settings panel shifting notification card details.</p>
+        </div>
+    </div>
+
+    <!-- APP 7 -->
+    <div class="page-break"></div>
+    <div class="card">
+        <h2>🎨 Application 07: Theme Switcher (Light/Dark Mode)</h2>
+        <span class="badge">App 7 (Port 5007)</span>
+        <p>
+            Toggles color schemes via JS Interop and persists selection in browser local storage. Variables adjust background gradients, cards, borders, text, and sidebars.
+        </p>
+        <h3>Theme helper implementation (Application07/wwwroot/js/theme.js)</h3>
+        <div class="code-block">window.themeHelper = {
+    setTheme: function (theme) {
+        localStorage.setItem('theme', theme);
+        if (theme === 'dark') {
+            document.body.classList.add('dark-theme');
+            document.body.classList.remove('light-theme');
+        } else {
+            document.body.classList.add('light-theme');
+            document.body.classList.remove('dark-theme');
+        }
+    },
+    getTheme: function () { return localStorage.getItem('theme') || 'light'; }
+};</div>
+        
+        <div class="screenshot-container">
+            <img class="screenshot" src="images/app07.png" alt="Application 07 Output">
+            <p>Figure 7: Responsive Light/Dark layout scheme showing custom dark parameters.</p>
+        </div>
+    </div>
+
+    <!-- APP 8 -->
+    <div class="page-break"></div>
+    <div class="card">
+        <h2>💾 Application 08: Database-Backed To-Do List</h2>
+        <span class="badge">App 8 (Port 5008)</span>
+        <p>
+            Connects the Client planner UI directly to MS SQL Server LocalDB. Add, toggle, delete, and clear actions perform database SQL commands and issue updates locally.
+        </p>
+        <h3>EF Core Database Context Code (Application08/Services/TodoDbContext.cs)</h3>
+        <div class="code-block">using Microsoft.EntityFrameworkCore;
+
+namespace Application08.Services
+{
+    public class TodoDbContext : DbContext
+    {
+        public TodoDbContext(DbContextOptions<TodoDbContext> options) : base(options) { }
+        public DbSet<TodoTask> TodoTasks { get; set; }
+    }
+}</div>
+
+        <h3>Database Schema & Attributes Matrix</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Column Name</th>
+                    <th>Data Type</th>
+                    <th>Constraints</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Id</strong></td>
+                    <td>INT</td>
+                    <td>Primary Key, Identity(1,1)</td>
+                    <td>Unique auto-incremented primary key.</td>
+                </tr>
+                <tr>
+                    <td><strong>Title</strong></td>
+                    <td>NVARCHAR(100)</td>
+                    <td>Required, Not Null</td>
+                    <td>The text title details of the task.</td>
+                </tr>
+                <tr>
+                    <td><strong>IsCompleted</strong></td>
+                    <td>BIT</td>
+                    <td>Not Null</td>
+                    <td>Completion boolean state flags.</td>
+                </tr>
+                <tr>
+                    <td><strong>CreatedAt</strong></td>
+                    <td>DATETIME2</td>
+                    <td>Not Null</td>
+                    <td>Time when record was logged.</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="screenshot-container">
+            <img class="screenshot" src="images/app08.png" alt="Application 08 Output">
+            <p>Figure 8: Database-synchronized list pulling elements directly from LocalDB SQL Server.</p>
+        </div>
+    </div>
+
+</body>
+</html>

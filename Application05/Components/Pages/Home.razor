@@ -1,0 +1,28 @@
+@page "/"
+@rendermode InteractiveServer
+
+<PageTitle>App 5: Auth State Manager</PageTitle>
+
+<div class="glass-card animate-fade-in">
+    <h2>🔐 Application 05: State Management Service</h2>
+    <p class="text-secondary">Demonstrates managing shared application states across independent components using a Singleton service pattern.</p>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <Login />
+        </div>
+        <div class="col-md-6">
+            <UserProfile />
+        </div>
+    </div>
+
+    <div class="concept-card mt-4">
+        <h4>📚 State Management Concepts Explained</h4>
+        <hr class="my-2" style="border-color: var(--border-color);" />
+        <ul>
+            <li><strong>Singleton State Service:</strong> The <code>AuthenticationStateService</code> is registered as a Singleton in <code>Program.cs</code>, meaning a single service instance is shared across the entire application.</li>
+            <li><strong>Event Notifications:</strong> The service exposes an <code>OnChange</code> event. When login/logout transitions are requested, the service fires this event.</li>
+            <li><strong>Reactive Subscriptions:</strong> Both the <code>Login</code> and <code>UserProfile</code> sub-components subscribe to <code>AuthService.OnChange</code> and trigger <code>StateHasChanged()</code> when it fires, updating their views reactively.</li>
+        </ul>
+    </div>
+</div>

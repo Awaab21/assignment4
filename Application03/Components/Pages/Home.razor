@@ -1,0 +1,103 @@
+@page "/"
+@rendermode InteractiveServer
+
+<PageTitle>App 3: Local To-Do List</PageTitle>
+
+<div class="glass-card animate-fade-in">
+    <h2>📋 Application 03: In-Memory To-Do List</h2>
+    <p class="text-secondary">Create and manage a quick local checklist. State resets on page reload.</p>
+
+    <!-- Task Input Form -->
+    <div class="form-group d-flex gap-2 mt-4">
+        <input type="text" class="form-control" @bind="newTaskTitle" @bind:event="oninput" @onkeyup="HandleKeyUp" placeholder="Enter a new task here..." />
+        <button class="btn-premium" @onclick="AddTask" disabled="@string.IsNullOrWhiteSpace(newTaskTitle)">
+            Add Task
+        </button>
+    </div>
+
+    <!-- Tasks List Display -->
+    <div class="mt-4">
+        <h4>Task List (One-Way Bound Display)</h4>
+        <hr class="my-2" style="border-color: var(--border-color);" />
+
+        @if (tasks.Count == 0)
+        {
+            <div class="alert-premium alert-info">
+                <span>ℹ️</span>
+                <div>No tasks found. Try typing a task name and clicking "Add Task"!</div>
+            </div>
+        }
+        else
+        {
+            <div class="task-list">
+                @foreach (var task in tasks)
+                {
+                    <div class="task-item @(task.IsCompleted ? "completed" : "")">
+                        <div class="d-flex align-items-center gap-3">
+                            <input type="checkbox" @bind="task.IsCompleted" class="todo-checkbox" />
+                            <span class="task-title">@task.Title</span>
+                        </div>
+                        <button class="btn btn-sm btn-outline-danger" @onclick="() => DeleteTask(task)" style="border-radius: 8px;">
+                            🗑️
+                        </button>
+                    </div>
+                }
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <span class="text-secondary font-weight-500">Total Tasks: @tasks.Count | Completed: @tasks.Count(t => t.IsCompleted)</span>
+                <button class="btn-danger-premium" @onclick="ClearAllTasks">
+                    ⚠️ Clear All
+                </button>
+            </div>
+        }
+    </div>
+
+    <div class="concept-card mt-4">
+        <h4>📚 Concept Explanation</h4>
+        <hr class="my-2" style="border-color: var(--border-color);" />
+        <ul>
+            <li><strong>Two-Way Binding:</strong> Syncs the text box input to the C# variable <code>newTaskTitle</code> (using <code>@@bind="newTaskTitle"</code>).</li>
+            <li><strong>One-Way Binding:</strong> Iterates and displays rows dynamically from the C# list <code>tasks</code>.</li>
+            <li><strong>Clear List:</strong> The "Clear All" button clears the local <code>tasks</code> list object, resetting the UI instantly.</li>
+        </ul>
+    </div>
+</div>
+
+@code {
+    private List<LocalTask> tasks = new();
+    private string newTaskTitle = string.Empty;
+
+    private void AddTask()
+    {
+        if (!string.IsNullOrWhiteSpace(newTaskTitle))
+        {
+            tasks.Add(new LocalTask { Title = newTaskTitle.Trim(), IsCompleted = false });
+            newTaskTitle = string.Empty;
+        }
+    }
+
+    private void DeleteTask(LocalTask task)
+    {
+        tasks.Remove(task);
+    }
+
+    private void ClearAllTasks()
+    {
+        tasks.Clear();
+    }
+
+    private void HandleKeyUp(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            AddTask();
+        }
+    }
+
+    public class LocalTask
+    {
+        public string Title { get; set; } = string.Empty;
+        public bool IsCompleted { get; set; }
+    }
+}

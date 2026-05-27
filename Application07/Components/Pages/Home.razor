@@ -1,0 +1,35 @@
+@page "/"
+@rendermode InteractiveServer
+
+<PageTitle>App 7: Theme Switcher</PageTitle>
+
+<div class="glass-card animate-fade-in">
+    <h2>🎨 Application 07: Theme Switcher (Light/Dark Mode)</h2>
+    <p class="text-secondary">Toggle between Light and Dark visual skins. Selection is saved inside the browser's local storage and reloads automatically without flickering.</p>
+
+    <div class="alert-premium alert-info mt-4">
+        <span>💡</span>
+        <div>
+            <strong>Interactive Test:</strong> Click the <strong>Switch to Dark Mode / Switch to Light Mode</strong> button in the top-right header area. Notice how all components, inputs, sidebars, and fonts dynamically swap variables!
+        </div>
+    </div>
+
+    <div class="concept-card mt-4">
+        <h4>📚 Theme Switcher Implementation Steps</h4>
+        <hr class="my-2" style="border-color: var(--border-color);" />
+        <ul>
+            <li>
+                <strong>CSS Theme Variables (<code>wwwroot/app.css</code>):</strong> We structure all design attributes (background gradients, text tones, card backing opacity, borders) under CSS variables in <code>:root</code>. We then declare matching variable values under <code>body.dark-theme</code>.
+            </li>
+            <li>
+                <strong>Local Storage Persistence (<code>wwwroot/js/theme.js</code>):</strong> A JavaScript helper class <code>window.themeHelper</code> handles reading (<code>getTheme</code>) and writing (<code>setTheme</code>) values to browser local storage.
+            </li>
+            <li>
+                <strong>Flicker Prevention (<code>App.razor</code>):</strong> An inline, self-executing script is added to the top of <code>&lt;body&gt;</code> in <code>App.razor</code>. Since it runs synchronously as soon as the body tag opens, it injects the stored class (e.g., <code>dark-theme</code>) prior to Blazor components rendering, avoiding a white flash.
+            </li>
+            <li>
+                <strong>Interactive Toggle (<code>MainLayout.razor</code>):</strong> The layout button binds to <code>ToggleTheme()</code> in C#, invoking the Javascript interop module via <code>IJSRuntime</code>.
+            </li>
+        </ul>
+    </div>
+</div>

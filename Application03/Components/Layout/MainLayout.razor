@@ -1,0 +1,62 @@
+@inherits LayoutComponentBase
+@inject IJSRuntime JS
+
+<div class="app-container">
+    <div class="sidebar">
+        <NavMenu ActiveApp="3" />
+    </div>
+
+    <main class="main-content">
+        <div class="top-header">
+            <div class="student-info-bar">
+                <span><strong>Student Name:</strong> Awaab | <strong>Email:</strong> 247371@@students.au.edu.pk</span>
+                <span class="ms-3"><strong>Instructor:</strong> Mr. Qaiser Ali</span>
+            </div>
+            
+            <button class="theme-toggle-btn" @onclick="ToggleTheme">
+                @if (currentTheme == "light")
+                {
+                    <span>🌙 Switch to Dark Mode</span>
+                }
+                else
+                {
+                    <span>☀️ Switch to Light Mode</span>
+                }
+            </button>
+        </div>
+
+        <article class="content animate-fade-in">
+            @Body
+        </article>
+    </main>
+</div>
+
+<div id="blazor-error-ui" data-nosnippet>
+    An unhandled error has occurred.
+    <a href="." class="reload">Reload</a>
+    <span class="dismiss">🗙</span>
+</div>
+
+@code {
+    private string currentTheme = "light";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                currentTheme = await JS.InvokeAsync<string>("themeHelper.getTheme");
+                await JS.InvokeVoidAsync("themeHelper.setTheme", currentTheme);
+                StateHasChanged();
+            }
+            catch {}
+        }
+    }
+
+    private async Task ToggleTheme()
+    {
+        currentTheme = currentTheme == "light" ? "dark" : "light";
+        await JS.InvokeVoidAsync("themeHelper.setTheme", currentTheme);
+    }
+}

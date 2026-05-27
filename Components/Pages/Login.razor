@@ -1,0 +1,33 @@
+@inject AuthenticationStateService AuthService
+@implements IDisposable
+
+<div class="p-4 border rounded-4 mb-3" style="background: rgba(99, 102, 241, 0.05); border-color: var(--border-color) !important;">
+    <h5>🔐 Component 1: Login Controller</h5>
+    <p class="text-secondary small">This sub-component triggers authentication state transitions.</p>
+    <hr style="border-color: var(--border-color);" />
+    
+    @if (AuthService.IsAuthenticated)
+    {
+        <button class="btn-danger-premium" @onclick="AuthService.LogOut">
+            🚪 Log Out
+        </button>
+    }
+    else
+    {
+        <button class="btn-premium" @onclick="AuthService.LogIn">
+            🔑 Log In
+        </button>
+    }
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        AuthService.OnChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        AuthService.OnChange -= StateHasChanged;
+    }
+}

@@ -1,0 +1,52 @@
+@page "/clickcounter"
+@rendermode InteractiveServer
+
+<div class="glass-card animate-fade-in">
+    <h2>🔢 Application 04: Click Counter & Manual Adjuster</h2>
+    <p class="text-secondary">Tracks button clicks with options to manually set values using data bindings.</p>
+
+    <div class="d-flex flex-column align-items-center justify-content-center py-4 my-3 rounded-3" style="background: rgba(99, 102, 241, 0.05); border: 1px solid var(--border-color);">
+        <span class="text-secondary font-weight-600">Current Count (One-Way Bound):</span>
+        <h1 class="display-3 font-weight-800 my-2" style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            @count
+        </h1>
+        
+        <div class="d-flex gap-3 mt-3">
+            <button class="btn-premium" @onclick="IncrementCount">
+                ➕ Click to Increment
+            </button>
+            <button class="btn-secondary-premium" @onclick="ResetCount">
+                🔄 Reset
+            </button>
+        </div>
+    </div>
+
+    <div class="form-group mt-4">
+        <label for="manualCount" class="form-label">Manually adjust count (Two-Way Bound):</label>
+        <input id="manualCount" type="number" class="form-control" @bind="count" placeholder="Type a number..." />
+    </div>
+
+    <div class="concept-card mt-4">
+        <h4>📚 Concept Explanation</h4>
+        <hr class="my-2" style="border-color: var(--border-color);" />
+        <ul>
+            <li><strong>Event Handling (<code>@@onclick</code>):</strong> The increment button calls C# <code>IncrementCount()</code> on click.</li>
+            <li><strong>One-Way Binding (<code>@@count</code>):</strong> The text shows the count variable on the screen.</li>
+            <li><strong>Two-Way Binding (<code>@@bind="count"</code>):</strong> The input element is linked bidirectionally to <code>count</code>, syncing typing and click updates immediately.</li>
+        </ul>
+    </div>
+</div>
+
+@code {
+    private int count = 0;
+
+    private void IncrementCount()
+    {
+        count++;
+    }
+
+    private void ResetCount()
+    {
+        count = 0;
+    }
+}

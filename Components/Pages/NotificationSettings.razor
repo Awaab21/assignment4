@@ -1,0 +1,39 @@
+@inject NotificationConfig Config
+
+<div class="p-4 border rounded-4 mb-3" style="background: rgba(99, 102, 241, 0.05); border-color: var(--border-color) !important;">
+    <h5>⚙️ Component 1: Notification Settings</h5>
+    <p class="text-secondary small">Modify the singleton configuration. Changes update the display component dynamically.</p>
+    <hr style="border-color: var(--border-color);" />
+
+    <div class="form-group">
+        <label for="defaultCount" class="form-label">Default Notification Count:</label>
+        <input id="defaultCount" type="number" min="0" max="8" class="form-control" 
+               value="@Config.DefaultNumberOfNotifications" 
+               @onchange="UpdateCount" />
+    </div>
+
+    <div class="form-group mt-3">
+        <label for="styleSelect" class="form-label">Display Style Layout:</label>
+        <select id="styleSelect" class="form-control" 
+                value="@Config.NotificationStyle" 
+                @onchange="UpdateStyle">
+            <option value="Compact">Compact List View</option>
+            <option value="Detailed">Detailed Cards View</option>
+        </select>
+    </div>
+</div>
+
+@code {
+    private void UpdateCount(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int val))
+        {
+            Config.DefaultNumberOfNotifications = val;
+        }
+    }
+
+    private void UpdateStyle(ChangeEventArgs e)
+    {
+        Config.NotificationStyle = e.Value?.ToString() ?? "Compact";
+    }
+}

@@ -1,0 +1,77 @@
+@page "/"
+
+<PageTitle>Assignment 4 Dashboard - Home</PageTitle>
+
+<div class="glass-card animate-fade-in text-center py-5" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(168, 85, 247, 0.05) 100%);">
+    <h1 class="display-4 font-weight-800 mb-2">Assignment Number 4</h1>
+    <p class="lead text-secondary mx-auto" style="max-width: 600px;">
+        A high-fidelity interactive dashboard built with Blazor Server, demonstrating state management, database connections, form validation, dependency injection, and data bindings.
+    </p>
+    <div class="d-flex justify-content-center gap-3 mt-4">
+        <a href="databinding" class="btn-premium">Explore Apps</a>
+        <a href="todolist" class="btn-secondary-premium">Try To-Do (LocalDB)</a>
+    </div>
+</div>
+
+<div class="dashboard-grid animate-fade-in mt-4">
+    <!-- App 1 Card -->
+    <div class="glass-card">
+        <h3>🔗 App 1: Data Binding</h3>
+        <p class="text-secondary small">Demonstrates one-way and two-way binding synchronization between C# properties and browser input fields.</p>
+        <a href="databinding" class="btn btn-sm btn-outline-primary mt-2" style="border-radius: 8px; text-decoration: none;">Launch App 1 →</a>
+    </div>
+
+    <!-- App 2 Card -->
+    <div class="glass-card">
+        <h3>📝 App 2: Form Validation</h3>
+        <p class="text-secondary small">Implements EditForm, DataAnnotationsValidator, and attributes like [Required] and [EmailAddress] with success messages.</p>
+        <a href="formvalidation" class="btn btn-sm btn-outline-primary mt-2" style="border-radius: 8px; text-decoration: none;">Launch App 2 →</a>
+    </div>
+
+    <!-- App 3 & 8 Card -->
+    <div class="glass-card">
+        <h3>✅ App 3 & 8: To-Do Database</h3>
+        <p class="text-secondary small">To-Do list using binding, connected to local MS SQL Server LocalDB via EF Core for full C.R.U.D syncing.</p>
+        <a href="todolist" class="btn btn-sm btn-outline-primary mt-2" style="border-radius: 8px; text-decoration: none;">Launch App 3 & 8 →</a>
+    </div>
+
+    <!-- App 4 Card -->
+    <div class="glass-card">
+        <h3>🔢 App 4: Click Counter</h3>
+        <p class="text-secondary small">Tracks button clicks using event handling, display count via one-way binding, and manual adjustments via two-way binding.</p>
+        <a href="clickcounter" class="btn btn-sm btn-outline-primary mt-2" style="border-radius: 8px; text-decoration: none;">Launch App 4 →</a>
+    </div>
+
+    <!-- App 5 Card -->
+    <div class="glass-card">
+        <h3>🔐 App 5: Auth State Manager</h3>
+        <p class="text-secondary small">Maintains global user authentication status using a singleton state service across separate interactive components.</p>
+        <a href="auth" class="btn btn-sm btn-outline-primary mt-2" style="border-radius: 8px; text-decoration: none;">Launch App 5 →</a>
+    </div>
+
+    <!-- App 6 Card -->
+    <div class="glass-card">
+        <h3>🔔 App 6: Config Notifications</h3>
+        <p class="text-secondary small">Simulates configurable notifications using DI, letting users toggle default counts and Compact/Detailed view layouts dynamically.</p>
+        <a href="notifications" class="btn btn-sm btn-outline-primary mt-2" style="border-radius: 8px; text-decoration: none;">Launch App 6 →</a>
+    </div>
+</div>
+
+<div class="glass-card mt-4">
+    <h3>⚙️ Global Features Included</h3>
+    <hr class="my-2" style="border-color: var(--border-color);" />
+    <div class="row text-secondary">
+        <div class="col-md-6">
+            <ul>
+                <li><strong>Application 7: Theme Switcher:</strong> Light/Dark mode toggling with browser <code>localStorage</code> cache. Prevents unstyled content flash on reload.</li>
+                <li><strong>Unified Navigation:</strong> A responsive, persistent glassmorphic sidebar allowing immediate access to each assignment app.</li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <ul>
+                <li><strong>Entity Framework Core:</strong> Integrated with <code>(localdb)\MSSQLLocalDB</code>, creating tables dynamically on application start.</li>
+                <li><strong>Premium Aesthetics:</strong> Styling powered by Google Fonts (Outfit & Inter), glassmorphism variables, soft gradients, and layout transitions.</li>
+            </ul>
+        </div>
+    </div>
+</div>
